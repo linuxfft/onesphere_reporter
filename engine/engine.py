@@ -59,17 +59,16 @@ def _raw_process_to_jasper_report(jrxml_file: str, data: Dict = None, file_forma
 
 def process_to_jasper_report(jrxml_file: str, out_file: str = 'output.pdf', data=None,
                              reports_dir=os.getenv('ENV_REPORTS_DIR'),
-                             raw=True) -> str:
-    ret = ''
+                             raw=True) -> bytes:
+    ret = b''
     out, file_format = out_file.split('.')
     if not out or not file_format:
         logger.error(f'{__name__}解析out_file格式错误，out_file: {out_file}')
         return ret
     d = _raw_process_to_jasper_report(jrxml_file, reports_dir=reports_dir, data=data, file_format=file_format)
-    str_d = bytes.decode(d, encoding='utf-8')
     if raw:
-        return str_d
+        return d
     ff = os.path.join(reports_dir, out_file)
     with open(ff, 'w+b') as f:
         f.write(d)
-    return str_d
+    return d

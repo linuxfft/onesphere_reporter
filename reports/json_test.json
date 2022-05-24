@@ -1,0 +1,32 @@
+{
+  "data": {
+    "cmk": 12.1,
+    "cpk": 111,
+    "results": [
+      {
+        "torque": 16.5,
+        "angle": 180,
+        "result": "NOK",
+        "time": "2021-12-22:18:00",
+        "tightening_id": "123123123",
+        "track_no": "1234567"
+      },
+      {
+        "torque": 16.5,
+        "angle": 180,
+        "result": "NOK",
+        "time": "2021-12-22:18:00",
+        "tightening_id": "123123123",
+        "track_no": "1234567"
+      },
+      {
+        "torque": 16.5,
+        "angle": 180,
+        "result": "NOK",
+        "time": "2021-12-22:18:00",
+        "tightening_id": "123123123",
+        "track_no": "1234567"
+      }
+    ]
+  }
+}
