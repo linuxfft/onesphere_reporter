@@ -1,0 +1,75 @@
+components:
+  schemas:
+    tighteningResults:
+      type: object
+      required:
+        - torque
+        - angle
+        - result
+        - time
+        - tightening_id
+        - track_no
+      properties:
+        torque:
+          type: number
+          example: 16.4
+        angle:
+          type: number
+          example: 16.4
+        result:
+          type: string
+          example: OK
+          enum:
+          - OK
+          - NOK
+          - AK2
+          - LSN
+        tightening_id:
+          type: number
+          example: 24234
+        time:
+          type: string
+          example: 2022-12-22 08:12:22
+        track_no:
+          type: string
+          example: 532134dsfe
+    generateCalibrateReportReqDataBody:
+      type: object
+      required:
+        - data
+      properties:
+        cmk:
+          type: number
+          example: 16.4
+        cpk:
+          type: number
+          example: json_test.pdf
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/tighteningResults'
+    generateCalibrateReportReqData:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: "#/components/schemas/generateCalibrateReportReqDataBody"
+    generateReportReq:
+      type: object
+      required:
+        - jrxml_file
+        - data
+      properties:
+        jrxml_file:
+          type: string
+          example: json_test.jrxml
+        output_file:
+          type: string
+          example: json_test.pdf
+        data:
+          $ref: "#/components/schemas/generateCalibrateReportReqData"
+    Pets:
+      type: array
+      items:
+        $ref: "#/components/schemas/Pet"

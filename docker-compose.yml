@@ -1,0 +1,23 @@
+version: '2.1'
+services:
+  onesphere_reporter:
+    container_name: onesphere_reporter
+    image: ghcr.io/masami10/onesphere_reporter/server
+    ports:
+      - "9090:9090"
+    volumes:
+      - reports:/opt/reports #报告模板的文件夹
+      - database:/opt/database #数据库保存的文件夹
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    restart: "always"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV_RUNTIME=prod
+      - ENV_DATABASE_NAME=/opt/database/reporter.db
+      - ENV_REPORTS_DIR=/opt/reports
+    healthcheck:
+      test: curl -f --silent --fail http://127.0.0.1:9090//healthz || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 3
