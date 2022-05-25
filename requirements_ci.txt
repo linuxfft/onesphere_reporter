@@ -5,4 +5,4 @@ aiohttp-swagger3==0.7.2
 cached-property==1.5.2
 tqdm==4.64.0
 typed-argument-parser==1.7.2
-git+https://e.coding.net/ethermeta/onesphere/pyreportjasper.git@master
+git+https://github.com/acesseonline/pyreportjasper.git@master
