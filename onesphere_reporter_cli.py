@@ -4,8 +4,8 @@ import os
 import sys
 from loguru import logger
 
-from constants import ENV_RUNTIME_ENV
-from utils import check_is_dev
+from utils.constants import ENV_RUNTIME_ENV
+from utils.utils import check_is_dev
 from argument import ArgsCli
 
 

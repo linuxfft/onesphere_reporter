@@ -6,8 +6,9 @@ from typing import Dict
 from aiohttp import web
 from loguru import logger
 from pprint import pformat
-from constants import ENV_REPORTS_DIR
+from utils.constants import ENV_REPORTS_DIR
 from engine.engine import process_to_jasper_report
+from utils.utils import ustr
 
 
 # FIXME: swagger库 bug, 第一个参数名必须为request
@@ -100,6 +101,6 @@ async def generate_report(request: web.Request, report_type: str = 'calibrate', 
             return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
         base64_data = base64.b64encode(data)
     except Exception as e:
-        msg = str(e)
+        msg = ustr(e)
         return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
     return web.json_response(status=HTTPStatus.CREATED, data={'data': str(base64_data)})

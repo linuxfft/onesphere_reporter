@@ -7,8 +7,8 @@ import signal
 from web.server import HttpServer
 from argument import ArgsService
 from loguru import logger
-from constants import ENV_RUNTIME_ENV, ENV_REPORTS_DIR
-from utils import check_is_dev
+from utils.constants import ENV_RUNTIME_ENV, ENV_REPORTS_DIR
+from utils.utils import check_is_dev
 import shutil
 
 if ENV_RUNTIME_ENV == ['prod', 'PROD', 'production']:

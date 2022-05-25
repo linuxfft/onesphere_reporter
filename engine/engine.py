@@ -7,7 +7,7 @@ from pyreportjasper.config import Config
 from pyreportjasper.report import Report
 import tempfile
 from loguru import logger
-from constants import ENV_REPORTS_DIR
+from utils.constants import ENV_REPORTS_DIR
 
 
 def compile_all_jrxml(reports_dir=ENV_REPORTS_DIR):

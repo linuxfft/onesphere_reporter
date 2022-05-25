@@ -9,7 +9,7 @@ from aiohttp_swagger3 import SwaggerDocs, SwaggerUiSettings, SwaggerInfo
 from loguru import logger
 
 from argument import ArgsService
-from constants import ENV_REPORTS_DIR, ENV_HTTP_MAX_SIZE
+from utils.constants import ENV_REPORTS_DIR, ENV_HTTP_MAX_SIZE
 from version import major_version, description, product_name
 from web.routes import healthzCheckHandler, readinessCheckHandler, generate_report
 
