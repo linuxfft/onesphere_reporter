@@ -23,4 +23,4 @@ RUN if [ "$BUILD_ENV" = "LOCAL" ]; \
 	else pip install -r /opt/onesphere_reporter/requirements_ci.txt; \
     fi
 
-CMD ["onesphere_reporter_service" ]
+CMD ["onesphere_reporter_service"]

@@ -1,0 +1,28 @@
+name: Onesphere Report Service
+on:
+  push:
+    branches:
+      - release/*
+    tags:
+      - v*.**
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Docker login
+        run: |
+          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.ACTION_TOKEN }}
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ github.actor }}
+          password: ${{ secrets.ACTION_TOKEN }}
+          registry: ghcr.io
+          repository: masami10/onesphere_reporter/server
+          tag_with_ref: true
+          tag_with_sha: true
