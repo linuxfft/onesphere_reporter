@@ -15,6 +15,7 @@ services:
       - ENV_RUNTIME=prod
       - ENV_DATABASE_NAME=/opt/database/reporter.db
       - ENV_REPORTS_DIR=/opt/reports
+      - ENV_HTTP_MAX_SIZE=15
     healthcheck:
       test: curl -f --silent --fail http://127.0.0.1:9090//healthz || exit 1
       interval: 5s

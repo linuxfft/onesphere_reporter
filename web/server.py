@@ -1,24 +1,29 @@
 # -*- coding: utf-8 -*-
+import os
 import sqlite3
-
-from loguru import logger
-from typing import Optional
 from asyncio import AbstractEventLoop
-from web.routes import healthzCheckHandler, readinessCheckHandler, generate_report
-from database import create_database_connect
-from version import major_version, description, product_name
+from typing import Optional
+
 from aiohttp import web
 from aiohttp_swagger3 import SwaggerDocs, SwaggerUiSettings, SwaggerInfo
-import os
+from loguru import logger
+
 from argument import ArgsService
-from constants import ENV_REPORTS_DIR
+from constants import ENV_REPORTS_DIR, ENV_HTTP_MAX_SIZE
+from version import major_version, description, product_name
+from web.routes import healthzCheckHandler, readinessCheckHandler, generate_report
 
 ROOTDIR = os.path.dirname(os.path.realpath(__file__))
 component_file = os.path.join(ROOTDIR, 'components.yaml')
 
+HTTP_MIN_SIZE = 1024 * 1024 * 10
+
 
 def create_web_app() -> web.Application:
-    ret: web.Application = web.Application(client_max_size=1024 * 1024 * 10)
+    client_max_size = ENV_HTTP_MAX_SIZE * 1024 * 1024
+    if client_max_size < HTTP_MIN_SIZE:
+        client_max_size = HTTP_MIN_SIZE
+    ret: web.Application = web.Application(client_max_size=client_max_size)
     swagger = SwaggerDocs(
         ret,
         swagger_ui_settings=SwaggerUiSettings(path="/docs/", filter=True),
