@@ -27,17 +27,21 @@ def handler(signum, frame, *args, **kwargs):
 
 
 def check_report_dir():
-    report_dir = ENV_REPORTS_DIR or args.reports_dir
-    if not os.path.exists(report_dir):
-        os.makedirs(report_dir, exist_ok=True)
-    if not os.listdir(report_dir):
-        src = os.path.join(os.getcwd(), 'reports')
-        shutil.copytree(src, report_dir)
+    try:
+        report_dir = ENV_REPORTS_DIR or args.reports_dir
+        if not os.path.exists(report_dir):
+            os.makedirs(report_dir, exist_ok=True)
+        if not os.listdir(report_dir):
+            src = os.path.join(os.getcwd(), 'reports')
+            shutil.copytree(src, report_dir)
+    except PermissionError as e:
+        logger.error(f'check_report_dir error PermissionError')
 
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, handler)
     signal.signal(signal.SIGTERM, handler)
+    check_report_dir()
     server = HttpServer(port=args.port, db_name=os.getenv('ENV_DATABASE_NAME', None) or args.db_name, cache=args.cache,
                         raw_args=args)
     server.run()

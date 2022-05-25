@@ -20,10 +20,10 @@ components:
           type: string
           example: OK
           enum:
-          - OK
-          - NOK
-          - AK2
-          - LSN
+            - OK
+            - NOK
+            - AK2
+            - LSN
         tightening_id:
           type: number
           example: 24234
@@ -36,14 +36,16 @@ components:
     generateCalibrateReportReqDataBody:
       type: object
       required:
-        - data
+        - results
+        - cmk
+        - cpk
       properties:
         cmk:
           type: number
-          example: 16.4
+          example: 1.33
         cpk:
           type: number
-          example: json_test.pdf
+          example: 1.66
         results:
           type: array
           items:
@@ -69,7 +71,14 @@ components:
           example: json_test.pdf
         data:
           $ref: "#/components/schemas/generateCalibrateReportReqData"
-    Pets:
-      type: array
-      items:
-        $ref: "#/components/schemas/Pet"
+    generateReportResp:
+      type: object
+      required:
+      - data
+      properties:
+        data:
+          type: string
+          description: base64 文件字符串
+        error:
+          type: string
+          description: 错误信息

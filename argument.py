@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-
+import os
 from tap import Tap
 
 
 class ArgsCommon(Tap):
-    reports_dir: str = '/opt/reports'
+    reports_dir: str = os.path.join(os.getcwd(), 'reports')
 
 
 class ArgsCli(ArgsCommon):  # Define console args

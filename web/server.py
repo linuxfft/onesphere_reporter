@@ -8,7 +8,7 @@ from web.routes import healthzCheckHandler, readinessCheckHandler, generate_repo
 from database import create_database_connect
 from version import major_version, description, product_name
 from aiohttp import web
-from aiohttp_swagger3 import SwaggerDocs, SwaggerUiSettings
+from aiohttp_swagger3 import SwaggerDocs, SwaggerUiSettings, SwaggerInfo
 import os
 from argument import ArgsService
 from constants import ENV_REPORTS_DIR
@@ -18,13 +18,13 @@ component_file = os.path.join(ROOTDIR, 'components.yaml')
 
 
 def create_web_app() -> web.Application:
-    # loop = asyncio.get_event_loop()
     ret: web.Application = web.Application(client_max_size=1024 * 1024 * 10)
     swagger = SwaggerDocs(
         ret,
         swagger_ui_settings=SwaggerUiSettings(path="/docs/", filter=True),
-        title=f"{description}-接口文档",
-        version=major_version,
+        info=SwaggerInfo(title=f"{description}-接口文档",
+                         description=description,
+                         version=major_version),
         components=component_file
     )
     swagger.add_routes([web.get('/healthz', healthzCheckHandler),
@@ -41,9 +41,9 @@ class HttpServer(object):
         self._app: web.Application = create_web_app()
         self._app['db']: Optional[sqlite3.Connection] = None
         self._app['args']: ArgsService = kwargs.get('raw_args')
-        if kwargs.get('db_name', ''):
-            # 创建数据库
-            self._app['db'] = create_database_connect(kwargs.get('db_name'), kwargs.get('cache', False))
+        # if kwargs.get('db_name', ''):
+        #     # 创建数据库
+        #     self._app['db'] = create_database_connect(kwargs.get('db_name'), kwargs.get('cache', False))
 
     def start(self, loop: Optional[AbstractEventLoop] = None):
         reports_dir = ENV_REPORTS_DIR or self._app['args'].reports_dir
