@@ -3,8 +3,7 @@ import os
 import json
 from typing import Dict
 from pyreportjasper import PyReportJasper
-from pyreportjasper.config import Config
-from pyreportjasper.report import Report
+from utils.utils import today, ensure_directory_exist, ustr
 import tempfile
 from loguru import logger
 from utils.constants import ENV_REPORTS_DIR
@@ -68,7 +67,13 @@ def process_to_jasper_report(jrxml_file: str, out_file: str = 'output.pdf', data
     d = _raw_process_to_jasper_report(jrxml_file, reports_dir=reports_dir, data=data, file_format=file_format)
     if raw:
         return d
-    ff = os.path.join(reports_dir, out_file)
+    directory = os.path.join(reports_dir, f"{today().replace('-', '_')}/")
+    try:
+        ensure_directory_exist(directory)
+    except Exception as e:
+        logger.error(ustr(e))
+        return ret
+    ff = os.path.join(directory, out_file)
     with open(ff, 'w+b') as f:
         f.write(d)
     return d
