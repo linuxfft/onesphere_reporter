@@ -3,7 +3,7 @@ import os
 import sqlite3
 from asyncio import AbstractEventLoop
 from typing import Optional
-
+import aiohttp_cors
 from aiohttp import web
 from aiohttp_swagger3 import SwaggerDocs, SwaggerUiSettings, SwaggerInfo
 from loguru import logger
@@ -36,6 +36,19 @@ def create_web_app() -> web.Application:
                         web.get('/rediness', readinessCheckHandler),
                         web.post('/report/{report_type}', generate_report)
                         ])
+
+    # Configure default CORS settings.
+    cors = aiohttp_cors.setup(ret, defaults={
+        "*": aiohttp_cors.ResourceOptions(
+            allow_credentials=True,
+            expose_headers="*",
+            allow_headers="*",
+        )
+    })
+
+    # Configure CORS on all routes.
+    for route in list(ret.router.routes()):
+        cors.add(route)
 
     return ret
 
