@@ -7,5 +7,12 @@ pip install -r requirements.txt -i https://pypi.douban.com/simple
 
 ```
 
+### 环境变量
+```bash
+ENV_REPORTS_DIR: reporters_dir路径, 默认为工作目录下的reports路径
+ENV_HTTP_MAX_SIZE: HTTP Client Size, 单位为mb
+ENV_RUNTIME: runtime 环境, 默认为dev
+```
+
 ### 已知问题
 - [ ] 生成的PDF不支持中文

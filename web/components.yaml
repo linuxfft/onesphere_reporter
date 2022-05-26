@@ -66,9 +66,11 @@ components:
         jrxml_file:
           type: string
           example: json_test.jrxml
+          description: jrxml文件名称，放置在reporters_dir(通过ENV_REPORTS_DIR可设定)路径下
         output_file:
           type: string
           example: json_test.pdf
+          description: 报告输出文件名称，放置在reporters_dir(通过ENV_REPORTS_DIR可设定)路径下，按当前日期分目录
         data:
           $ref: "#/components/schemas/generateCalibrateReportReqData"
     generateReportResp:
