@@ -72,9 +72,9 @@ async def generate_report(request: web.Request, report_type: str = 'calibrate', 
               application/json:
                 schema:
                   $ref: "#/components/schemas/generateReportResp"
-
         """
     raw = True
+    data = {'file_path': '', 'file_data': ''}
     if report_type != 'calibrate':
         logger.error(f'报告类型不支持,当前只支持 calibrate, report type: {report_type}')
         return web.Response(status=HTTPStatus.BAD_REQUEST)
@@ -85,21 +85,24 @@ async def generate_report(request: web.Request, report_type: str = 'calibrate', 
     if not os.path.exists(jrxml_file):
         msg = f'{jrxml_file} 不存在'
         logger.error(f'{generate_report.__name__} error: {msg}')
-        return web.json_response(status=HTTPStatus.BAD_REQUEST, data={'error': msg, 'data': msg})
+        return web.json_response(status=HTTPStatus.BAD_REQUEST, data={'error': msg, 'data': data})
     output_file = body.get('output_file')
     if output_file:
         raw = False
     logger.debug(f'{generate_report.__name__} 收到需要渲染数据: {pformat(render_data, indent=4)}')
     logger.debug(f'{generate_report.__name__} 收到需要jrxml: {jrxml_file}')
     try:
-        _, directory = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir,
+        d, directory = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir,
                                                 raw=raw)
         if not directory:
             msg = f'process_to_jasper_report 失败'
-            return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
+            return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': data})
+        base64_data = base64.b64encode(d)
     except Exception as e:
         msg = ustr(e)
-        return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
+        return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': data})
     fn = os.path.join(directory, output_file)
     logger.debug(f'{generate_report.__name__} 渲染输出路径: {fn}')
-    return web.json_response(status=HTTPStatus.CREATED, data={'data': fn})
+    data['file_data'] = str(base64_data)
+    data['file_path'] = fn
+    return web.json_response(status=HTTPStatus.CREATED, data={'data': data})

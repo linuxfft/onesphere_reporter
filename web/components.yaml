@@ -1,51 +1,106 @@
 components:
   schemas:
+    tighteningToolInfo:
+      type: object
+      required:
+        - serial_no
+        - pset
+        - angle_max
+        - angle_min
+        - angle_target
+        - torque_max
+        - torque_min
+        - torque_target
+      properties:
+        serial_no:
+          type: string
+          example: 1910222
+          description: 工具序列号
+        pset:
+          type: integer
+          example: 1
+        angle_max:
+          type: number
+          example: 19.5
+        angle_min:
+          type: number
+          example: 11.5
+        angle_target:
+          type: number
+          example: 12.5
+        torque_max:
+          type: number
+          example: 22.5
+        torque_min:
+          type: number
+          example: 19.5
+        torque_target:
+          type: number
+          example: 20.5
     tighteningResults:
       type: object
       required:
-        - torque
-        - angle
-        - result
-        - time
-        - tightening_id
-        - track_no
+        - sensor_torque
+        - sensor_angle
+        - measure_time
       properties:
-        torque:
+        sensor_torque:
           type: number
           example: 16.4
-        angle:
+        sensor_angle:
           type: number
           example: 16.4
-        result:
-          type: string
-          example: OK
-          enum:
-            - OK
-            - NOK
-            - AK2
-            - LSN
-        tightening_id:
-          type: number
-          example: 24234
-        time:
+        measure_time:
           type: string
           example: 2022-12-22 08:12:22
-        track_no:
-          type: string
-          example: 532134dsfe
-    generateCalibrateReportReqDataBody:
+    spcDataObject:
       type: object
       required:
-        - results
         - cmk
+        - cp
         - cpk
+        - std
+        - mean
       properties:
         cmk:
           type: number
           example: 1.33
-        cpk:
+          description: CMK
+        cp:
           type: number
           example: 1.66
+        cpk:
+          type: number
+          example: 1.63
+        std:
+          type: number
+          example: 0.21
+          description: 标准差
+        mean:
+          type: number
+          example: 1.63
+          description: 平均值
+    tighteningToolSPCData:
+      type: object
+      required:
+        - torque
+        - angle
+      properties:
+        torque:
+          $ref: "#/components/schemas/spcDataObject"
+        angle:
+          $ref: "#/components/schemas/spcDataObject"
+    generateCalibrateReportReqDataBody:
+      type: object
+      required:
+        - tool_info
+        - spc
+        - results
+      properties:
+        tool_info:
+          $ref: "#/components/schemas/tighteningToolInfo"
+        spc:
+          $ref: "#/components/schemas/tighteningToolSPCData"
         results:
           type: array
           items:
@@ -74,14 +129,26 @@ components:
           description: 报告输出文件名称，放置在reporters_dir(通过ENV_REPORTS_DIR可设定)路径下，按当前日期分目录
         data:
           $ref: "#/components/schemas/generateCalibrateReportReqData"
+    generateReportDataObject:
+      type: object
+      required:
+        - file_path
+        - file_data
+      properties:
+        file_path:
+          type: string
+          example: /opt/reports/json_out.pdf
+          description: 输出的绝对路径
+        file_data:
+          type: string
+          description: 输出的Base64数据
     generateReportResp:
       type: object
       required:
-      - data
+        - data
       properties:
         data:
-          type: string
-          description: 输出的绝对路径
+          $ref: "#/components/schemas/generateReportDataObject"
         error:
           type: string
           description: 错误信息
