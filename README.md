@@ -18,3 +18,4 @@ ENV_RUNTIME: runtime 环境, 默认为dev
 
 ### 已知问题
 - [ ] 生成的PDF不支持中文
+- [ ] 报告和报告的jrxml必须方式在ENV_REPORTS_DIR设定下(默认为工作目录下的reports路径),容器环境中一定为/opt/reports

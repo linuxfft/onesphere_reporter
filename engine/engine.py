@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import json
-from typing import Dict
+from typing import Dict, Tuple
 from pyreportjasper import PyReportJasper
 from utils.utils import today, ensure_directory_exist, ustr
 import tempfile
@@ -58,22 +58,22 @@ def _raw_process_to_jasper_report(jrxml_file: str, data: Dict = None, file_forma
 
 def process_to_jasper_report(jrxml_file: str, out_file: str = 'output.pdf', data=None,
                              reports_dir=os.getenv('ENV_REPORTS_DIR'),
-                             raw=True) -> bytes:
+                             raw=True) -> Tuple[bytes, str]:
     ret = b''
     out, file_format = out_file.split('.')
     if not out or not file_format:
         logger.error(f'{__name__}解析out_file格式错误，out_file: {out_file}')
-        return ret
+        return ret, ''
     d = _raw_process_to_jasper_report(jrxml_file, reports_dir=reports_dir, data=data, file_format=file_format)
     if raw:
-        return d
+        return d, ''
     directory = os.path.join(reports_dir, f"{today().replace('-', '_')}/")
     try:
         ensure_directory_exist(directory)
     except Exception as e:
         logger.error(ustr(e))
-        return ret
+        return ret, ''
     ff = os.path.join(directory, out_file)
     with open(ff, 'w+b') as f:
         f.write(d)
-    return d
+    return d, directory

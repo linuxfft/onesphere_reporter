@@ -86,21 +86,20 @@ async def generate_report(request: web.Request, report_type: str = 'calibrate', 
         msg = f'{jrxml_file} 不存在'
         logger.error(f'{generate_report.__name__} error: {msg}')
         return web.json_response(status=HTTPStatus.BAD_REQUEST, data={'error': msg, 'data': msg})
-    real_output_file = output_file = body.get('output_file')
+    output_file = body.get('output_file')
     if output_file:
         raw = False
-        real_output_file = os.path.join(report_dir, output_file)
     logger.debug(f'{generate_report.__name__} 收到需要渲染数据: {pformat(render_data, indent=4)}')
     logger.debug(f'{generate_report.__name__} 收到需要jrxml: {jrxml_file}')
-    if real_output_file:
-        logger.debug(f'{generate_report.__name__} 渲染输出路径: {real_output_file}')
     try:
-        data = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir, raw=raw)
-        if not data:
+        _, directory = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir,
+                                                raw=raw)
+        if not directory:
             msg = f'process_to_jasper_report 失败'
             return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
-        base64_data = base64.b64encode(data)
     except Exception as e:
         msg = ustr(e)
         return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': msg})
-    return web.json_response(status=HTTPStatus.CREATED, data={'data': str(base64_data)})
+    fn = os.path.join(directory, output_file)
+    logger.debug(f'{generate_report.__name__} 渲染输出路径: {fn}')
+    return web.json_response(status=HTTPStatus.CREATED, data={'data': fn})

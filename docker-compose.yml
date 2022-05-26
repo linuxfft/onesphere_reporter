@@ -6,7 +6,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - reports:/opt/reports #报告模板的文件夹
+      - /opt/reports:/opt/reports #报告模板的文件夹
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
     restart: "always"
