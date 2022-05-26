@@ -3,6 +3,8 @@
 
 ## 开发前准备
 ```bash
+git submodule update --init --recursive
+
 pip install -r requirements.txt -i https://pypi.douban.com/simple
 
 ```
