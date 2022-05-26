@@ -1,32 +1,45 @@
 {
   "data": {
-    "cmk": 12.1,
-    "cpk": 111,
-    "results": [
-      {
-        "torque": 16.5,
-        "angle": 180,
-        "result": "NOK",
-        "time": "2021-12-22:18:00",
-        "tightening_id": "123123123",
-        "track_no": "1234567"
+    "tool_info": {
+      "tightening_unit": "EPSA12",
+      "pset": 1,
+      "angle_max": 30,
+      "angle_min": 10,
+      "angle_target": 20,
+      "torque_max": 100,
+      "torque_min": 20,
+      "torque_target": 50
       },
-      {
-        "torque": 16.5,
-        "angle": 180,
-        "result": "NOK",
-        "time": "2021-12-22:18:00",
-        "tightening_id": "123123123",
-        "track_no": "1234567"
+    "spc": {
+      "torque": {
+        "cmk": 1.33,
+        "cp": 1.35,
+        "cpk": 1.34,
+        "std": 1.2
       },
-      {
-        "torque": 16.5,
-        "angle": 180,
-        "result": "NOK",
-        "time": "2021-12-22:18:00",
-        "tightening_id": "123123123",
-        "track_no": "1234567"
+      "angle": {
+        "cmk": 1.33,
+        "cp": 1.35,
+        "cpk": 1.34,
+        "std": 1.2
       }
-    ]
+      },
+      "results": [
+        {
+          "measure_time": "2022-05-26  18:00:00",
+          "sensor_torque": 10,
+          "sensor_angle": 5
+        },
+         {
+          "measure_time": "2022-05-26 18:00:02",
+          "sensor_torque": 12,
+          "sensor_angle": 15
+        },
+         {
+          "measure_time": "2022-05-26  18:00:03",
+          "sensor_torque": 13,
+          "sensor_angle": 25
+        }
+      ]
+    }
   }
-}

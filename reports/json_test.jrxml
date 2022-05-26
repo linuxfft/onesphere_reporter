@@ -4,7 +4,7 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="222"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="test json"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -33,53 +33,73 @@
 		</box>
 	</style>
 	<subDataset name="Dataset1" uuid="7e664b5c-7336-4d3c-8b9a-4bdf9456d603">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="222"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="test json"/>
 		<queryString language="json">
 			<![CDATA[data.results]]>
 		</queryString>
-		<field name="torque" class="java.math.BigDecimal">
-			<property name="net.sf.jasperreports.json.field.expression" value="torque"/>
-			<fieldDescription><![CDATA[torque]]></fieldDescription>
+		<field name="measure_time" class="java.lang.String">
+			<property name="net.sf.jasperreports.json.field.expression" value="measure_time"/>
+			<fieldDescription><![CDATA[measure_time]]></fieldDescription>
 		</field>
-		<field name="angle" class="java.lang.Integer">
-			<property name="net.sf.jasperreports.json.field.expression" value="angle"/>
-			<fieldDescription><![CDATA[angle]]></fieldDescription>
+		<field name="sensor_torque" class="java.lang.Integer">
+			<property name="net.sf.jasperreports.json.field.expression" value="sensor_torque"/>
+			<fieldDescription><![CDATA[sensor_torque]]></fieldDescription>
 		</field>
-		<field name="result" class="java.lang.String">
-			<property name="net.sf.jasperreports.json.field.expression" value="result"/>
-			<fieldDescription><![CDATA[result]]></fieldDescription>
-		</field>
-		<field name="time" class="java.lang.String">
-			<property name="net.sf.jasperreports.json.field.expression" value="time"/>
-			<fieldDescription><![CDATA[time]]></fieldDescription>
-		</field>
-		<field name="tightening_id" class="java.lang.Integer">
-			<property name="net.sf.jasperreports.json.field.expression" value="tightening_id"/>
-			<fieldDescription><![CDATA[tightening_id]]></fieldDescription>
-		</field>
-		<field name="track_no" class="java.lang.Integer">
-			<property name="net.sf.jasperreports.json.field.expression" value="track_no"/>
-			<fieldDescription><![CDATA[track_no]]></fieldDescription>
+		<field name="sensor_angle" class="java.lang.Integer">
+			<property name="net.sf.jasperreports.json.field.expression" value="sensor_angle"/>
+			<fieldDescription><![CDATA[sensor_angle]]></fieldDescription>
 		</field>
 	</subDataset>
 	<queryString language="json">
 		<![CDATA[data]]>
 	</queryString>
-	<field name="cmk" class="java.math.BigDecimal">
-		<property name="net.sf.jasperreports.json.field.expression" value="cmk"/>
-		<fieldDescription><![CDATA[cmk]]></fieldDescription>
+	<field name="torque_cmk" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.torque.cmk"/>
 	</field>
-	<field name="cpk" class="java.lang.Integer">
-		<property name="net.sf.jasperreports.json.field.expression" value="cpk"/>
-		<fieldDescription><![CDATA[cpk]]></fieldDescription>
+	<field name="tightening_unit" class="java.lang.String">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.tightening_unit"/>
 	</field>
-	<field name="results" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="results"/>
-		<fieldDescription><![CDATA[results]]></fieldDescription>
+	<field name="pset" class="java.lang.Integer">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.pset"/>
 	</field>
-	<field name="tightening_results" class="java.lang.String">
-		<property name="net.sf.jasperreports.json.field.expression" value="results.result"/>
-		<fieldDescription><![CDATA[tightening result series]]></fieldDescription>
+	<field name="angle_max" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.angle_max"/>
+	</field>
+	<field name="angle_min" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.angle_min"/>
+	</field>
+	<field name="angle_target" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.angle_target"/>
+	</field>
+	<field name="torque_max" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.torque_max"/>
+	</field>
+	<field name="torque_min" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.torque_min"/>
+	</field>
+	<field name="torque_target" class="java.lang.Long">
+		<property name="net.sf.jasperreports.json.field.expression" value="tool_info.torque_target"/>
+	</field>
+	<field name="torque_cp" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.torque.cp"/>
+	</field>
+	<field name="torque_cpk" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.torque.cpk"/>
+	</field>
+	<field name="angle_cmk" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.angle.cmk"/>
+	</field>
+	<field name="angle_cp" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.angle.cp"/>
+	</field>
+	<field name="angle_cpk" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.angle.cpk"/>
+	</field>
+	<field name="angle_std" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.angle.std"/>
+	</field>
+	<field name="torque_std" class="java.lang.Float">
+		<property name="net.sf.jasperreports.json.field.expression" value="spc.torque.std"/>
 	</field>
 	<background>
 		<band/>
@@ -106,16 +126,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="68">
-			<textField>
-				<reportElement x="440" y="10" width="100" height="30" uuid="be05b379-7720-495b-ae23-47f3ff272630"/>
-				<textFieldExpression><![CDATA[$F{cpk}.toString()]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="10" width="100" height="30" uuid="baa9435f-3124-4fbf-888a-ca378039dcda"/>
-				<textFieldExpression><![CDATA[$F{cmk}.toString()]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="68"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="30">
@@ -153,10 +164,195 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="308"/>
-		<band height="215">
+		<band height="463">
+			<textField>
+				<reportElement x="120" y="10" width="100" height="30" uuid="366956a8-9786-4e4e-aebc-4d3693ca737c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6367538-3df0-4954-8d16-df1d3a44aedc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{tightening_unit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="10" width="100" height="30" uuid="9ff6e388-3faa-4548-afaf-f11a8582028e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6367538-3df0-4954-8d16-df1d3a44aedc"/>
+				</reportElement>
+				<text><![CDATA[tightening_unit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="40" width="100" height="30" uuid="5fc38711-44c0-48cf-b9bd-e1ce2ecae8fa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e1f942b-7bbd-41da-bd4a-831ab0c1a0ae"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{pset}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="32" y="40" width="100" height="30" uuid="de6e2461-44cd-448a-b5e5-82a4fdf5a956">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8e1f942b-7bbd-41da-bd4a-831ab0c1a0ae"/>
+				</reportElement>
+				<text><![CDATA[pset:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="10" width="100" height="30" uuid="04e754b4-e7ff-4bf5-b67b-67f20c1ba3a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bf1e7bc2-7870-45f0-84ea-055a0ae0a02f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_max}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="230" y="10" width="100" height="30" uuid="ec280832-08c8-4d67-8204-3ed8ce12274d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bf1e7bc2-7870-45f0-84ea-055a0ae0a02f"/>
+				</reportElement>
+				<text><![CDATA[angle_max:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="40" width="100" height="30" uuid="5c7a672c-db59-4ff5-b535-0293dc80fdeb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="051342a9-bf30-44fa-8f8b-7fa5787f1737"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_min}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="230" y="40" width="100" height="30" uuid="a080ad61-de0a-4706-a508-e4bcdd708c89">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="051342a9-bf30-44fa-8f8b-7fa5787f1737"/>
+				</reportElement>
+				<text><![CDATA[angle_min:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="70" width="100" height="30" uuid="4c05eeb0-841e-4cdb-8e7c-4cadbb0d7268">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8a426d80-148e-44af-96bd-c81e3ba2936d"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_target}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="230" y="70" width="100" height="30" uuid="cffb1b9f-9a30-4146-9db0-060e3f164572">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8a426d80-148e-44af-96bd-c81e3ba2936d"/>
+				</reportElement>
+				<text><![CDATA[angle_target:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="10" width="100" height="30" uuid="bb7ad07b-4d84-46b4-8185-68b8ad27d605">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="555c7bc1-dafd-492f-8f8a-24c459d7dfaa"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_max}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="10" width="100" height="30" uuid="910424b6-9617-426d-b9e2-873e1b2f89e8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="555c7bc1-dafd-492f-8f8a-24c459d7dfaa"/>
+				</reportElement>
+				<text><![CDATA[torque_max]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="40" width="100" height="30" uuid="6d67e408-e2c1-41b6-ad77-33e781c1dfaa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05c70bd7-0a98-4cd6-ade8-5cc9fedf75cb"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_min}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="40" width="100" height="30" uuid="e1eecaec-dc64-475d-b5a4-14d506453a96">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="05c70bd7-0a98-4cd6-ade8-5cc9fedf75cb"/>
+				</reportElement>
+				<text><![CDATA[torque_min]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="480" y="70" width="100" height="30" uuid="20288e3c-bdbe-4d1e-ba87-8a62aa72b52f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a28151da-4ce9-4cd3-9690-baa452d77f99"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_target}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="410" y="70" width="100" height="30" uuid="42018018-8942-47b2-a93c-f14b72c98229">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a28151da-4ce9-4cd3-9690-baa452d77f99"/>
+				</reportElement>
+				<text><![CDATA[torque_target]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-30" y="100" width="605" height="3" uuid="94cc2839-5cec-4655-96f2-e3a1cde8334d"/>
+			</line>
+			<textField>
+				<reportElement x="120" y="150" width="100" height="30" uuid="0e1e6ccc-48b2-4ff3-b4ca-40d52b1ddaf9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="197e3a79-786c-47f3-90d2-fa9e2dff8d5b"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_cmk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="42" y="150" width="80" height="30" uuid="55847b3e-2dc3-4fc0-9d58-1ecd56e29383">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="197e3a79-786c-47f3-90d2-fa9e2dff8d5b"/>
+				</reportElement>
+				<text><![CDATA[torque]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="220" y="150" width="100" height="30" uuid="ba86c479-393a-4341-849c-7cc2be5562da">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af52a974-6536-46c3-a15c-a0df42054320"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_cp}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="220" y="120" width="100" height="30" uuid="da2ca1ee-2c3b-4d0b-b1e2-c9e830e0ea73">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af52a974-6536-46c3-a15c-a0df42054320"/>
+				</reportElement>
+				<text><![CDATA[cp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="120" width="100" height="30" uuid="1a3b7674-2a0c-44bf-8125-d761cb160701">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="af52a974-6536-46c3-a15c-a0df42054320"/>
+				</reportElement>
+				<text><![CDATA[cmk]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="320" y="150" width="100" height="30" uuid="56c03b4f-4116-40b1-be4b-9fbe8abbfa2b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="daba676d-f88f-447d-a73d-73f53e750ed5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_cpk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="120" width="100" height="30" uuid="9adf9da7-6fe4-4075-a805-23e54b8019b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="daba676d-f88f-447d-a73d-73f53e750ed5"/>
+				</reportElement>
+				<text><![CDATA[cpk]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="420" y="150" width="100" height="30" uuid="dac65e75-817c-4691-ab8d-335a64ebc6f0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2502d7aa-9dd0-44ed-b042-c370b713535f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{torque_std}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="120" width="100" height="30" uuid="8dd14d16-4f5c-4709-9553-a0bc7423febb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2502d7aa-9dd0-44ed-b042-c370b713535f"/>
+				</reportElement>
+				<text><![CDATA[std]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="122" y="180" width="100" height="30" uuid="21c36c4b-dad0-4365-b0f5-5ea138414916">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="28ced1bc-f213-4167-9daa-34c6263965aa"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_cmk}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="180" width="80" height="30" uuid="eef1ac3d-1e28-42be-8ca9-19c97c54fe5c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="28ced1bc-f213-4167-9daa-34c6263965aa"/>
+				</reportElement>
+				<text><![CDATA[angle]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="222" y="180" width="100" height="30" uuid="5fa1d024-e374-4ab0-a73b-f6b237a315dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="93de9156-c1bf-4867-883e-d9bbd6a2d1bc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_cp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="180" width="100" height="30" uuid="9cf8e478-a05c-4b09-97e9-fd02974de936">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7b53a3ed-91d5-4adc-bd84-c6dfde2bc0b2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_cpk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="180" width="100" height="30" uuid="f224b920-27d5-46c1-a3cb-a5b84660ac85">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f7f55664-1e42-42c7-9791-3f76c7f39544"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{angle_std}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-20" y="228" width="595" height="2" uuid="310fd2a4-d3bf-4305-83cc-bf39f3fc9653"/>
+			</line>
 			<componentElement>
-				<reportElement key="" x="0" y="0" width="555" height="215" uuid="7ac3ac17-e136-40b5-99e5-abe9a4ae4208">
+				<reportElement key="" x="3" y="248" width="555" height="215" uuid="7ac3ac17-e136-40b5-99e5-abe9a4ae4208">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -169,7 +365,7 @@
 						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("results")]]></dataSourceExpression>
 					</datasetRun>
 					<jr:columnGroup width="555" uuid="047bff6e-9f60-4265-a254-130b88043267">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [7]"/>
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [3]"/>
 						<jr:tableHeader style="Table_TH" height="70" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="555" height="70" uuid="c52e4f6e-9c35-44c7-9b3a-268d6a5818da"/>
@@ -179,138 +375,68 @@
 								<text><![CDATA[Tightening Results]]></text>
 							</staticText>
 						</jr:tableHeader>
-						<jr:column width="60" uuid="860edb27-84df-4a71-bf99-6b5d67bc3ae0">
+						<jr:column width="160" uuid="860edb27-84df-4a71-bf99-6b5d67bc3ae0">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
 							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="60" height="30" uuid="ac77fb19-d377-4d10-b901-af02999bccd9"/>
+									<reportElement x="0" y="0" width="160" height="30" uuid="ac77fb19-d377-4d10-b901-af02999bccd9"/>
 									<text><![CDATA[torque]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="60" height="30" uuid="0d28264f-4593-45f5-96af-cac6af29d45f"/>
-									<textFieldExpression><![CDATA[$F{torque}]]></textFieldExpression>
+									<reportElement x="0" y="0" width="160" height="30" uuid="0d28264f-4593-45f5-96af-cac6af29d45f"/>
+									<textFieldExpression><![CDATA[$F{sensor_torque}.toString()]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="70" uuid="c968712f-9a15-42a8-850b-30fab180ff1a">
+						<jr:column width="185" uuid="c968712f-9a15-42a8-850b-30fab180ff1a">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
 							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="70" height="30" uuid="716ef485-22f4-4944-b988-6b7f928b5ed7"/>
+									<reportElement x="0" y="0" width="185" height="30" uuid="716ef485-22f4-4944-b988-6b7f928b5ed7"/>
 									<text><![CDATA[angle]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="70" height="30" uuid="1e3a7cea-ba69-45b8-8ee7-88dc7b5c45d2"/>
-									<textFieldExpression><![CDATA[$F{angle}]]></textFieldExpression>
+									<reportElement x="0" y="0" width="185" height="30" uuid="1e3a7cea-ba69-45b8-8ee7-88dc7b5c45d2"/>
+									<textFieldExpression><![CDATA[$F{sensor_angle}.toString()]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="70" uuid="0ee81af9-197a-40e1-899a-1290722a3d9d">
+						<jr:column width="210" uuid="3d000aff-cc85-41cc-8e95-93e078b0058b">
 							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
 							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 								<staticText>
-									<reportElement x="0" y="0" width="70" height="30" uuid="8912d469-9425-48b1-b2b2-ab0fb7e4666d"/>
-									<text><![CDATA[result]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
-							<jr:detailCell style="Table_TD" height="30">
-								<textField>
-									<reportElement x="0" y="0" width="70" height="30" uuid="b2f98a60-3e55-4ee9-82c3-2302a55259fe"/>
-									<textFieldExpression><![CDATA[$F{result}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
-						<jr:column width="80" uuid="3d000aff-cc85-41cc-8e95-93e078b0058b">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
-							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="80" height="30" uuid="0c7537b9-57c3-4c67-801f-3e1e45bb74fb"/>
+									<reportElement x="0" y="0" width="210" height="30" uuid="0c7537b9-57c3-4c67-801f-3e1e45bb74fb"/>
 									<text><![CDATA[time]]></text>
 								</staticText>
 							</jr:columnHeader>
 							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 							<jr:detailCell style="Table_TD" height="30">
 								<textField>
-									<reportElement x="0" y="0" width="80" height="30" uuid="2e0e2dfc-e0c2-4fe2-af8e-6a432858979a"/>
-									<textFieldExpression><![CDATA[$F{time}]]></textFieldExpression>
+									<reportElement x="0" y="0" width="210" height="30" uuid="2e0e2dfc-e0c2-4fe2-af8e-6a432858979a"/>
+									<textFieldExpression><![CDATA[$F{measure_time}]]></textFieldExpression>
 								</textField>
-							</jr:detailCell>
-						</jr:column>
-						<jr:column width="80" uuid="617b9d9f-83d9-407c-a8ab-79adce33c7a4">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
-							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="80" height="30" uuid="c570431d-6ce8-4c66-af47-68ed16eef9ee"/>
-									<text><![CDATA[tightening_id]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
-							<jr:detailCell style="Table_TD" height="30">
-								<textField>
-									<reportElement x="0" y="0" width="80" height="30" uuid="515e5ed4-2811-4fec-a89b-dfed2fed512b"/>
-									<textFieldExpression><![CDATA[$F{tightening_id}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
-						<jr:column width="80" uuid="34d9dc69-89fe-49f1-b7bd-4de1ec7d7c94">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-							<jr:tableHeader style="Table_TH" height="2" rowSpan="1"/>
-							<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
-							<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-								<staticText>
-									<reportElement x="0" y="0" width="80" height="30" uuid="1e4a9661-a5bc-434b-ac3b-3caa3a2ae046"/>
-									<text><![CDATA[track_no]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
-							<jr:detailCell style="Table_TD" height="30">
-								<textField>
-									<reportElement x="0" y="0" width="80" height="30" uuid="88cc6322-8ae5-4f57-93b9-137f2f0fcd92"/>
-									<textFieldExpression><![CDATA[$F{track_no}]]></textFieldExpression>
-								</textField>
-							</jr:detailCell>
-						</jr:column>
-						<jr:column width="115" uuid="6c5f63ba-a278-4e42-b1a8-a0f8a28d7dab">
-							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
-							<jr:tableHeader style="Table_TH" height="2"/>
-							<jr:tableFooter style="Table_TH" height="30"/>
-							<jr:columnHeader style="Table_CH" height="30">
-								<staticText>
-									<reportElement x="0" y="0" width="115" height="30" uuid="1434f8b8-0263-470a-b134-85bdbe7370a5"/>
-									<text><![CDATA[追溯码条码]]></text>
-								</staticText>
-							</jr:columnHeader>
-							<jr:columnFooter style="Table_CH" height="30"/>
-							<jr:detailCell style="Table_TD" height="30">
-								<componentElement>
-									<reportElement x="0" y="0" width="115" height="30" uuid="2dc96e52-95bf-47a5-be60-95e5b4b45168"/>
-									<jr:barbecue type="Code128" drawText="false" checksumRequired="false">
-										<jr:codeExpression><![CDATA[$F{track_no}.toString()]]></jr:codeExpression>
-									</jr:barbecue>
-								</componentElement>
 							</jr:detailCell>
 						</jr:column>
 					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
+			<line>
+				<reportElement x="32" y="140" width="512" height="1" uuid="66ba3665-2305-45b9-b7d1-3a43feeb0baa"/>
+			</line>
 		</band>
+		<band height="215"/>
 	</detail>
 	<columnFooter>
 		<band/>
