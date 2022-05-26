@@ -12,6 +12,7 @@ services:
     restart: "always"
     environment:
       - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=utf-8
       - ENV_RUNTIME=prod
       - ENV_DATABASE_NAME=/opt/database/reporter.db
       - ENV_REPORTS_DIR=/opt/reports
