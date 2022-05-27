@@ -92,16 +92,15 @@ async def generate_report(request: web.Request, report_type: str = 'calibrate', 
     logger.debug(f'{generate_report.__name__} 收到需要渲染数据: {pformat(render_data, indent=4)}')
     logger.debug(f'{generate_report.__name__} 收到需要jrxml: {jrxml_file}')
     try:
-        d, directory = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir,
-                                                raw=raw)
-        if not directory:
+        d, fn = process_to_jasper_report(jrxml_file, output_file, data=render_data, reports_dir=report_dir,
+                                         raw=raw)
+        if not fn:
             msg = f'process_to_jasper_report 失败'
             return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': data})
         base64_data = base64.b64encode(d)
     except Exception as e:
         msg = ustr(e)
         return web.json_response(status=HTTPStatus.BAD_GATEWAY, data={'error': msg, 'data': data})
-    fn = os.path.join(directory, output_file)
     logger.debug(f'{generate_report.__name__} 渲染输出路径: {fn}')
     data['file_data'] = str(base64_data)
     data['file_path'] = fn

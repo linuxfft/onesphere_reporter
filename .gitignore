@@ -131,3 +131,6 @@ dmypy.json
 *.pdf
 .idea/
 .vscode/
+*.jasper
+*.html
+20*/

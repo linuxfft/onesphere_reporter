@@ -126,7 +126,12 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="68"/>
+		<band height="87">
+			<image>
+				<reportElement x="247" y="10" width="50" height="50" uuid="6b568c06-625a-4c6d-99cf-4d4ab5bc1a96"/>
+				<imageExpression><![CDATA["/opt/assets/invoice_logo.png"]]></imageExpression>
+			</image>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="30">

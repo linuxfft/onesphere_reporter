@@ -16,7 +16,12 @@ ENV_HTTP_MAX_SIZE: HTTP Client Size, 单位为mb
 ENV_RUNTIME: runtime 环境, 默认为dev
 ```
 
+### 注意：
+1. 图片渲染
+   1. 将图片放置在/opt/assets路径下
+   2. 修改jrxml，将图片都写为绝对路径方式: /opt/assets/{图片文件名}
+
 ### 已知问题
 - [ ] 生成的PDF不支持中文
-- [ ] 不支持资源问题，如图片等添加至报告中渲染
-- [ ] 报告和报告的jrxml必须方式在ENV_REPORTS_DIR设定下(默认为工作目录下的reports路径),容器环境中一定为/opt/reports
+- [X] 不支持资源问题，如图片等添加至报告中渲染
+- [ ] 报告和报告的jrxml必须放置在ENV_REPORTS_DIR设定下(默认为工作目录下的reports路径),容器环境中一定为/opt/reports

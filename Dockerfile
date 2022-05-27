@@ -15,6 +15,7 @@ COPY ./ /opt/onesphere_reporter
 WORKDIR /opt/onesphere_reporter
 
 RUN mkdir -p /opt/reports \
+    && mkdir -p /opt/assets \
     && ln -s /opt/onesphere_reporter/onesphere_reporter_cli.py /usr/local/bin/onesphere_reporter_cli \
     && ln -s /opt/onesphere_reporter/onesphere_reporter_service.py /usr/local/bin/onesphere_reporter_service
 
@@ -22,5 +23,7 @@ RUN if [ "$BUILD_ENV" = "LOCAL" ]; \
     then pip install -r /opt/onesphere_reporter/requirements.txt -i https://pypi.douban.com/simple; \
 	else pip install -r /opt/onesphere_reporter/requirements_ci.txt; \
     fi
+
+VOLUME ["/opt/reports", "/opt/assets"]
 
 CMD ["onesphere_reporter_service"]
