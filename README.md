@@ -31,3 +31,6 @@ ENV_RUNTIME: runtime 环境, 默认为dev
 - [ ] 生成的PDF不支持中文
 - [X] 不支持资源问题，如图片等添加至报告中渲染
 - [ ] 报告和报告的jrxml必须放置在ENV_REPORTS_DIR设定下(默认为工作目录下的reports路径),容器环境中一定为/opt/reports
+
+
+<!-- Security scan triggered at 2025-09-01 23:49:32 -->
